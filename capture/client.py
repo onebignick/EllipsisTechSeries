@@ -8,7 +8,7 @@ import math
 model = YOLO("yolo-Weights/yolov8n.pt")
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client_socket.connect(("0.0.0.0", 9999))
+client_socket.connect(("0.0.0.0", 9996))
 
 classNames = [
     "person",
@@ -113,7 +113,7 @@ while True:
 
     received_frame = pickle.loads(frame_data)
 
-    if counter % 10 == 0:
+    if counter % 1 == 0:
         results = model(received_frame, stream=True)
 
         for r in results:
@@ -139,7 +139,7 @@ while True:
                     thickness,
                 )
         cv2.imshow("Client Video", received_frame)
-    counter = counter % 10 + 1
+    counter = counter % 1 + 1
 
     if cv2.waitKey(1) == ord("q"):
         break
