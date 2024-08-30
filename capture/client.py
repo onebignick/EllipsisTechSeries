@@ -96,6 +96,7 @@ classNames = [
 received_data = b""
 payload_size = struct.calcsize("L")
 
+counter = 0
 while True:
     while len(received_data) < payload_size:
         received_data = client_socket.recv(4096)
@@ -111,31 +112,34 @@ while True:
     received_data = received_data[msg_size:]
 
     received_frame = pickle.loads(frame_data)
-    results = model(received_frame, stream=True)
-    for r in results:
-        for box in r.boxes:
-            x1, y1, x2, y2 = [int(i) for i in box.xyxy[0]]
-            cv2.rectangle(received_frame, (x1, y1), (x2, y2), (255, 0, 255), 3)
-            confidence = math.ceil((box.conf[0] * 100)) / 100
-            print("Confidence: ", confidence)
-            print("Class name: ", classNames[int(box.cls[0])])
 
-            org = [x1, y1]
-            font = cv2.FONT_HERSHEY_SIMPLEX
-            fontScale = 1
-            color = (255, 0, 0)
-            thickness = 2
-            cv2.putText(
-                received_frame,
-                classNames[int(box.cls[0])],
-                org,
-                font,
-                fontScale,
-                color,
-                thickness,
-            )
+    if counter % 10 == 0:
+        results = model(received_frame, stream=True)
 
-    cv2.imshow("Client Video", received_frame)
+        for r in results:
+            for box in r.boxes:
+                x1, y1, x2, y2 = [int(i) for i in box.xyxy[0]]
+                cv2.rectangle(received_frame, (x1, y1), (x2, y2), (255, 0, 255), 3)
+                confidence = math.ceil((box.conf[0] * 100)) / 100
+                print("Confidence: ", confidence)
+                print("Class name: ", classNames[int(box.cls[0])])
+
+                org = [x1, y1]
+                font = cv2.FONT_HERSHEY_SIMPLEX
+                fontScale = 1
+                color = (255, 0, 0)
+                thickness = 2
+                cv2.putText(
+                    received_frame,
+                    classNames[int(box.cls[0])],
+                    org,
+                    font,
+                    fontScale,
+                    color,
+                    thickness,
+                )
+        cv2.imshow("Client Video", received_frame)
+    counter = counter % 10 + 1
 
     if cv2.waitKey(1) == ord("q"):
         break
