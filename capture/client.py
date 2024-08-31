@@ -11,11 +11,13 @@ from datetime import datetime
 
 load_dotenv()
 ENDPOINT = os.environ.get("ENDPOINT")
+FPS = int(os.environ.get("FPS"))
+PORT = int(os.environ.get("PORT"))
 
 model = YOLO("yolo-Weights/yolov8n.pt")
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client_socket.connect(("0.0.0.0", 9999))
+client_socket.connect(("0.0.0.0", PORT))
 
 classNames = [
     "person",
@@ -100,6 +102,7 @@ classNames = [
     "toothbrush",
 ]
 
+suspicious_objects = set(["knife", "backpack", "scissors"])
 received_data = b""
 payload_size = struct.calcsize("L")
 
@@ -120,7 +123,7 @@ while True:
 
     received_frame = pickle.loads(frame_data)
 
-    if counter % 1 == 0:
+    if counter % FPS == 0:
         results = model(received_frame, stream=True)
 
         for r in results:
@@ -146,17 +149,17 @@ while True:
                     thickness,
                 )
                 
-                if (classNames[int(box.cls[0])] == "knife"):
+                if (classNames[int(box.cls[0])] in suspicious_objects) and (counter % FPS == 0) :
                     res = requests.post(ENDPOINT, json={
-                        "itemCategory": "weapon",
-                        "itemName": "knife",
+                        "itemCategory": "suspicious object",
+                        "itemName": classNames[int(box.cls[0])],
                         "location": "SMU SCIS 1",
                         "datetime": str(datetime.now())
                     })
                     print(res.json())
 
         cv2.imshow("Client Video", received_frame)
-    counter = counter % 1 + 1
+    counter = counter % FPS + 1
 
     if cv2.waitKey(1) == ord("q"):
         break
