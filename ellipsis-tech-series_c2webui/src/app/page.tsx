@@ -15,8 +15,13 @@ export default function Home() {
 
       <div className="px-3 h-full w-full flex flex-row gap-x-4">
         <div className="flex flex-col gap-y-4 md:w-3/4">
-          <IncidentSummary/>
-          <MapWithMarker lat={1.2952203} long={103.8496329}/>
+          <div id="incidentSummary" className="h-full">
+            <IncidentSummary/>
+          </div>
+          <div id="map">
+            <h1 className="text-white font-bold text-2xl uppercase py-1">Map:</h1>
+            <MapWithMarker lat={1.2952203} long={103.8496329}/> 
+          </div>
         </div>
         <div className="w-1/4 mb-3">
           <ResourceOverview />
