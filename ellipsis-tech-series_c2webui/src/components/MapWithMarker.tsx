@@ -25,14 +25,17 @@ export default function MapWithMarker({ lat, long }: location) {
     }
     
     return (
-        <LoadScript googleMapsApiKey={GOOGLE_MAPS_API_KEY}>
-            <GoogleMap
-                mapContainerStyle={containerStyle}
-                center={center}
-                zoom={19}
-            >
-            <Marker position={center} />
-            </GoogleMap>
-        </LoadScript>
+        <div className="border-[4px] border-[#5c6271] rounded-md">
+            <LoadScript googleMapsApiKey={GOOGLE_MAPS_API_KEY}>
+                <GoogleMap
+                    mapContainerStyle={containerStyle}
+                    center={center}
+                    zoom={19}
+                >
+                <Marker position={center} />
+                </GoogleMap>
+            </LoadScript>
+        </div>
+        
     )
 }

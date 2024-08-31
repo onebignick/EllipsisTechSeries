@@ -3,6 +3,7 @@ import AlertPopUp from "@/components/AlertPopUp";
 import UserAvatar from "@/components/UserAvatar";
 import MapWithMarker from "@/components/MapWithMarker";
 import ResourceOverview from "@/components/ResourceOverview";
+import IncidentSummary from "@/components/IncidentSummary";
 
 export default function Home() {
   return (
@@ -13,15 +14,14 @@ export default function Home() {
       </div>
 
       <div className="px-3 h-full w-full flex flex-row gap-x-4">
-        <div className="h-fit md:w-2/3 border-[4px] border-[#5c6271] rounded-md">
+        <div className="flex flex-col gap-y-4 = h-fit md:w-3/4 ">
           <MapWithMarker lat={1.2976188} long={103.8487032}/>
+          <IncidentSummary/>
         </div>
-        <div className="w-1/3">
+        <div className="w-1/4">
           <ResourceOverview />
         </div>
       </div>
-      
-      
       
       {/* <AlertPopUp
         itemCategory="weapon"

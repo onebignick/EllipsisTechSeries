@@ -15,8 +15,8 @@ export default function ResourceOverview() {
     ];
 
     return (
-        <div className="overflow-y-auto w-full h-full p-4 bg-[#131927] border-[4px] border-[#c6c8ce] rounded-md">
-            <h2 className="text-xl font-bold mb-4 text-white">Officers Patrolling</h2>
+        <div className="overflow-y-auto w-full h-full p-4 bg-[#131927] rounded-md">
+            <h2 className="text-xl uppercase font-bold mb-4 text-white">Officers On Duty:</h2>
                 {officers.map((officer, index) => (
                     <OfficerCard key={index} name={officer.name} location={officer.location} shiftDuration={officer.shiftDuration}/>
                 ))}

@@ -15,7 +15,7 @@ ENDPOINT = os.environ.get("ENDPOINT")
 model = YOLO("yolo-Weights/yolov8n.pt")
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client_socket.connect(("0.0.0.0", 9996))
+client_socket.connect(("0.0.0.0", 9999))
 
 classNames = [
     "person",
@@ -120,7 +120,7 @@ while True:
 
     received_frame = pickle.loads(frame_data)
 
-    if counter % 20 == 0:
+    if counter % 1 == 0:
         results = model(received_frame, stream=True)
 
         for r in results:
@@ -151,12 +151,12 @@ while True:
                         "itemCategory": "weapon",
                         "itemName": "knife",
                         "location": "SMU SCIS 1",
-                        "time": str(datetime.now())
+                        "datetime": str(datetime.now())
                     })
                     print(res.json())
 
         cv2.imshow("Client Video", received_frame)
-    counter = counter % 20 + 1
+    counter = counter % 1 + 1
 
     if cv2.waitKey(1) == ord("q"):
         break
