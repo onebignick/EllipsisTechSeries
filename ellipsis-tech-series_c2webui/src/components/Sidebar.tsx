@@ -1,6 +1,4 @@
 import React from 'react';
-// import { HomeIcon, ExclamationIcon, CogIcon } from '@heroicons/react/outline'; // Example icons, replace with your own if needed
-import { BeakerIcon } from '@heroicons/react/24/solid'
 import Image from 'next/image';
 
 export default function Sidebar() {
@@ -9,7 +7,7 @@ export default function Sidebar() {
       <div className="mb-3 p-2 flex flex-row">
         <Image src="/htx-logo.png" alt="agency-logo-user" width={47} height={65}/>
         <div className='w-full text-center flex justify-center items-center font-bold text-[18px]'>
-          Officer Patrol<br/>C2
+          Officer Patrol<br/>C2 System
         </div>
       </div>
 

@@ -22,14 +22,8 @@ export default function MapWithMarker({ lat, long }: location) {
         throw new Error("Google Maps API key is missing");
     }
 
-    // const center = {
-    //     lat: lat || 0,
-    //     lng: long || 0
-    // }
-    const [center, setCenter] = useState({ lat: lat, lng: long });
-
-    const [firstLoad, setFirstLoad] = useState(true);
     const alerts = usePolling();
+    const [center, setCenter] = useState({ lat: lat, lng: long });
     const [markers, setMarkers] = useState<location[]>([{lat: 1.2952203, long: 103.8496329, locationText: "Singapore Management University"} ]);
 
     useEffect(() => {
@@ -48,9 +42,7 @@ export default function MapWithMarker({ lat, long }: location) {
                     mapContainerStyle={containerStyle}
                     center={center}
                     zoom={19}
-                    // onLoad={() => setFirstLoad(false)}
                 >
-                {/* <Marker position={center} /> */}
                 {markers.map((location, index) => (
                     <Marker 
                         key={index} 
@@ -61,6 +53,5 @@ export default function MapWithMarker({ lat, long }: location) {
                 </GoogleMap>
             </LoadScript>
         </div>
-        
     )
 }

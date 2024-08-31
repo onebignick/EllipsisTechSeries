@@ -8,12 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Officer Patrol C2",
-  description: "Ellipsis TechSeries Hackathon",
-  // icons: {
-  //   icon: [{
-  //     url: "htx-logo.png"
-  //   }]
-  // }
+  description: "Command and Control Software - Ellipsis TechSeries Hackathon",
 };
 
 export default function RootLayout({

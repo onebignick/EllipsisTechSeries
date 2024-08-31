@@ -17,7 +17,7 @@ export const AlertPollingProvider = ({ children }: any) => {
             }
         };
 
-        const intervalId = setInterval(fetchAlerts, 2000); // poll every 2 seconds
+        const intervalId = setInterval(fetchAlerts, 1000); // poll every 1 second
 
         return () => clearInterval(intervalId);
     }, []);

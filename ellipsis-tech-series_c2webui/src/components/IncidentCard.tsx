@@ -22,7 +22,6 @@ export default function IncidentCard({itemCategory, itemName, location, datetime
                     <Button variant="outline" className='text-black hover:bg-slate-300 border-2 border-white'>Acknowledge</Button>
                 </div>
             </div>
-            
         </div>
     )
 }

@@ -1,5 +1,3 @@
-import Image from "next/image";
-import AlertPopUp from "@/components/AlertPopUp";
 import UserAvatar from "@/components/UserAvatar";
 import MapWithMarker from "@/components/MapWithMarker";
 import ResourceOverview from "@/components/ResourceOverview";
@@ -27,13 +25,6 @@ export default function Home() {
           <ResourceOverview />
         </div>
       </div>
-      
-      {/* <AlertPopUp
-        itemCategory="weapon"
-        itemName="Knife"
-        location="SMU School of Business"
-        datetime={Date().toLocaleString().split('GMT')[0].trim()}
-      /> */}
     </main>
   );
 }

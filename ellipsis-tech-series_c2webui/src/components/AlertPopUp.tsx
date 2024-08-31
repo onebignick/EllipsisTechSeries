@@ -21,7 +21,6 @@ export default function AlertPopUp({itemCategory, itemName, location, datetime} 
             <h1 className='text-2xl pb-2'><span className='font-bold'>Time Of Detection: </span>{datetime}</h1>
             <button onClick={handleAcknowledgement} className='bg-gray-500 hover:bg-gray-400 border-black border-[3px] p-3 text-[#ffffff] rounded-md mb-3 w-1/4 uppercase font-semibold'>Acknowledge</button>
         </div>
-        
     </div>
     )
 }
