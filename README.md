@@ -35,4 +35,5 @@ npm run dev
 ```
 
 a google maps api key is required to run the webapp locally.
-The project is already hosted on vercel
+The project is already hosted on vercel: <a target="_blank" href="https://ellipsis-tech-series.vercel.app/">WebUI Frontend</a><br><br>
+Note: The real-time will be displayed on the hosted frontend as the capture backend will be pointing to it
