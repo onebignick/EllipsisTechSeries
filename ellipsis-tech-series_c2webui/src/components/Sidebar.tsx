@@ -5,10 +5,10 @@ import Image from 'next/image';
 
 export default function Sidebar() {
   return (
-    <div className="h-screen w- bg-gray-800 text-white flex flex-col items-left py-4 fixed px-2 bg-[#293655]">
+    <div className="h-screen w-60 bg-gray-800 text-white flex flex-col items-left py-4 fixed px-2 bg-[#242c43]">
       <div className="mb-3 p-2 flex flex-row">
         <Image src="/htx-logo.png" alt="agency-logo-user" width={47} height={65}/>
-        <div className='w-full text-center flex justify-center items-center font-bold'>
+        <div className='w-full text-center flex justify-center items-center font-bold text-[18px]'>
           Officer Patrol<br/>C2
         </div>
       </div>

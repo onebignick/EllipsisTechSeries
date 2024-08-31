@@ -2,13 +2,7 @@
 import React from 'react'
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-
-interface alertPopUpParams {
-    itemCategory: string;
-    itemName: string;
-    location: string;
-    datetime: string;
-}
+import { alertPopUpParams } from '@/lib/definitions';
 
 export default function AlertPopUp({itemCategory, itemName, location, datetime} : alertPopUpParams) {
     const router = useRouter();
