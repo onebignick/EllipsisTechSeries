@@ -13,7 +13,7 @@ export default function IncidentCard({itemCategory, itemName, location, datetime
             <div className='flex justify-between'>
                 <div className='inline-block'>
                     <h3 className="text-lg font-bold">{}</h3>
-                    <p className='font-bold pt-1'>{`OBJECT: ${itemName} (${itemCategory[0].toUpperCase() + itemCategory.slice(1)})`}</p>
+                    <p className='font-bold pt-1'>{`OBJECT: ${itemName[0].toUpperCase() + itemName.slice(1)} (${itemCategory[0].toUpperCase() + itemCategory.slice(1)})`}</p>
                     <p className='font-bold'>LOCATION: {location}</p>
                     <p className='font-bold'>DATETIME: {datetime}</p>
                     <p className='font-bold'>OFFICER: {officerName}</p>

@@ -30,7 +30,7 @@ while True:
     message_size = struct.pack("L", len(serialized_frame))
     client_socket.sendall(message_size + serialized_frame)
 
-    cv.imshow("frame", frame)
+    # cv.imshow("frame", frame)
     if cv.waitKey(1) == ord("q"):
         break
 

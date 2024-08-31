@@ -165,9 +165,12 @@ while True:
                 )
                 
                 if (classNames[int(box.cls[0])] in suspicious_objects) and (counter % FPS == 0):
+                    category = "suspicious object"
+                    if classNames[int(box.cls[0])] == "backpack":
+                        category = "Unattended Object"
                     location = getRandomSchool()
                     res = requests.post(ENDPOINT, json={
-                        "itemCategory": "suspicious object",
+                        "itemCategory": category,
                         "itemName": classNames[int(box.cls[0])],
                         "location": location,
                         "datetime": str(datetime.now()),
