@@ -13,7 +13,7 @@ export default function Home() {
 
       <div className="px-3 h-full w-full flex flex-row gap-x-4">
         <div className="flex flex-col gap-y-4 md:w-3/4">
-          <div id="incidentSummary" className="h-full">
+          <div id="incidentSummary" className="h-[400px] max-h-1/2 ">
             <IncidentSummary/>
           </div>
           <div id="map">
