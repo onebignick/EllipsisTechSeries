@@ -10,13 +10,13 @@ export default function IncidentSummary() {
     
     const alerts = usePolling();
 
-    useEffect(() => {
-        if (alerts.length > 0) {
-            const latestAlert: alertPopUpParams = alerts[alerts.length - 1];
-            // console.log(alerts.length);
-            console.log(`New Alert: ${latestAlert.itemCategory}`);
-        }
-    }, [alerts]);
+    // useEffect(() => {
+    //     if (alerts.length > 0) {
+    //         const latestAlert: alertPopUpParams = alerts[alerts.length - 1];
+    //         // console.log(alerts.length);
+    //         console.log(`New Alert: ${latestAlert.itemCategory}`);
+    //     }
+    // }, [alerts]);
 
     return (
         <div className='overflow-y-auto w-full h-full p-4 bg-[#131927] rounded-md'>
@@ -31,6 +31,9 @@ export default function IncidentSummary() {
                         itemName={alert.itemName}
                         location={alert.location}
                         datetime={alert.datetime}
+                        lat={alert.lat}
+                        long={alert.long}
+                        officerName={alert.officerName}
                     />
                 ))
             ) : (

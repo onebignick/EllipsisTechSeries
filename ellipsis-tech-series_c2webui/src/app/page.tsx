@@ -9,14 +9,14 @@ export default function Home() {
   return (
     <main className="h-[100vh]">
       <div className="text-white uppercase font-bold text-3xl p-4 flex justify-between items-center">
-        <span>Dashboard</span>
+        <span className="font-sans">Dashboard</span>
         <UserAvatar username="Keith Lim"/>
       </div>
 
       <div className="px-3 h-full w-full flex flex-row gap-x-4">
         <div className="flex flex-col gap-y-4 md:w-3/4">
           <IncidentSummary/>
-          <MapWithMarker lat={1.2976188} long={103.8487032}/>
+          <MapWithMarker lat={1.2952203} long={103.8496329}/>
         </div>
         <div className="w-1/4 mb-3">
           <ResourceOverview />

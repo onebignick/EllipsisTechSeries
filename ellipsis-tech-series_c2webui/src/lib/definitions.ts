@@ -3,6 +3,9 @@ export interface alertPopUpParams {
     itemName: string;
     location: string;
     datetime: string;
+    lat: number;
+    long: number;
+    officerName: string;
 }
 
 export interface officerCardParams {
