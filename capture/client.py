@@ -4,6 +4,13 @@ import pickle
 import struct
 from ultralytics import YOLO
 import math
+import requests
+from dotenv import load_dotenv
+import os
+from datetime import datetime
+
+load_dotenv()
+ENDPOINT = os.environ.get("ENDPOINT")
 
 model = YOLO("yolo-Weights/yolov8n.pt")
 
@@ -113,7 +120,7 @@ while True:
 
     received_frame = pickle.loads(frame_data)
 
-    if counter % 1 == 0:
+    if counter % 20 == 0:
         results = model(received_frame, stream=True)
 
         for r in results:
@@ -138,8 +145,18 @@ while True:
                     color,
                     thickness,
                 )
+                
+                if (classNames[int(box.cls[0])] == "knife"):
+                    res = requests.post(ENDPOINT, json={
+                        "itemCategory": "weapon",
+                        "itemName": "knife",
+                        "location": "SMU SCIS 1",
+                        "time": str(datetime.now())
+                    })
+                    print(res.json())
+
         cv2.imshow("Client Video", received_frame)
-    counter = counter % 1 + 1
+    counter = counter % 20 + 1
 
     if cv2.waitKey(1) == ord("q"):
         break
