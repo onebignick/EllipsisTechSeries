@@ -24,6 +24,7 @@ export default function IncidentSummary() {
             {alerts.slice().reverse().map((alert: alertPopUpParams, index) => (
                 // <div key={index}>{alert.itemName}</div>
                 <IncidentCard
+                    key={index}
                     itemCategory={alert.itemCategory}
                     itemName={alert.itemName}
                     location={alert.location}
