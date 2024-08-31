@@ -8,6 +8,7 @@ import requests
 from dotenv import load_dotenv
 import os
 from datetime import datetime
+import random
 
 load_dotenv()
 ENDPOINT = os.environ.get("ENDPOINT")
@@ -106,6 +107,20 @@ suspicious_objects = set(["knife", "backpack", "scissors"])
 received_data = b""
 payload_size = struct.calcsize("L")
 
+mockLocationData = {
+    "SMU School of Business": (1.2952267,103.8503529),
+    "SMU School of Law": (1.2948947,103.8492584),
+    "SMU School of Computing": (1.2975207,103.8493083),
+    "SMU School of Economics": (1.2977693,103.8487971),
+    "SMU School of Social Sciences": (1.2948153,103.8483214),
+    "SMU Connexion": (1.2952257,103.844762),
+}
+
+def getRandomSchool():
+    locations = list(mockLocationData.keys())
+    numLocations = len(locations)
+    return locations[random.randint(0, numLocations - 1)]
+
 counter = 0
 while True:
     while len(received_data) < payload_size:
@@ -149,12 +164,16 @@ while True:
                     thickness,
                 )
                 
-                if (classNames[int(box.cls[0])] in suspicious_objects) and (counter % FPS == 0) :
+                if (classNames[int(box.cls[0])] in suspicious_objects) and (counter % FPS == 0):
+                    location = getRandomSchool()
                     res = requests.post(ENDPOINT, json={
                         "itemCategory": "suspicious object",
                         "itemName": classNames[int(box.cls[0])],
-                        "location": "SMU SCIS 1",
-                        "datetime": str(datetime.now())
+                        "location": location,
+                        "datetime": str(datetime.now()),
+                        "lat": mockLocationData[location][0],
+                        "long": mockLocationData[location][1],
+                        "officerName": "Qingyu"
                     })
                     print(res.json())
 
