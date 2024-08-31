@@ -14,11 +14,11 @@ export default function Home() {
       </div>
 
       <div className="px-3 h-full w-full flex flex-row gap-x-4">
-        <div className="flex flex-col gap-y-4 = h-fit md:w-3/4 ">
-          <MapWithMarker lat={1.2976188} long={103.8487032}/>
+        <div className="flex flex-col gap-y-4 md:w-3/4">
           <IncidentSummary/>
+          <MapWithMarker lat={1.2976188} long={103.8487032}/>
         </div>
-        <div className="w-1/4">
+        <div className="w-1/4 mb-3">
           <ResourceOverview />
         </div>
       </div>

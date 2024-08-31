@@ -25,7 +25,7 @@ export default function MapWithMarker({ lat, long }: location) {
     }
     
     return (
-        <div className="border-[4px] border-[#5c6271] rounded-md">
+        <div className="border-[4px] border-[#5c6271] rounded-md mb-3">
             <LoadScript googleMapsApiKey={GOOGLE_MAPS_API_KEY}>
                 <GoogleMap
                     mapContainerStyle={containerStyle}
