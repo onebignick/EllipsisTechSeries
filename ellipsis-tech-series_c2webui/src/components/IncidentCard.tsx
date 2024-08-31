@@ -18,7 +18,7 @@ export default function IncidentCard({itemCategory, itemName, location, datetime
                     <p className='font-bold'>DATETIME: {datetime}</p>
                     <p className='font-bold'>OFFICER: {officerName}</p>
                 </div>
-                <div className='flex justify-center items-center px-3'>
+                <div className='flex justify-center items-center px-2'>
                     <Button variant="outline" className='text-black hover:bg-slate-300 border-2 border-white'>Acknowledge</Button>
                 </div>
             </div>
