@@ -7,19 +7,19 @@ export const AlertPollingProvider = ({ children }: any) => {
     const [alerts, setAlerts] = useState([]);
 
     useEffect(() => {
-        // const fetchAlerts: any = async () => {
-        //     try {
-        //         const response = await fetch('/api/alertingWebhook');
-        //         const data = await response.json();
-        //         setAlerts(data.alerts);
-        //     } catch (error) {
-        //         console.error("Error fetching alerts:", error);
-        //     }
-        // };
+        const fetchAlerts: any = async () => {
+            try {
+                const response = await fetch('/api/alertingWebhook');
+                const data = await response.json();
+                setAlerts(data.alerts);
+            } catch (error) {
+                console.error("Error fetching alerts:", error);
+            }
+        };
 
-        // const intervalId = setInterval(fetchAlerts, 1000); // poll every 1 second
+        const intervalId = setInterval(fetchAlerts, 2000); // poll every 1 second
 
-        // return () => clearInterval(intervalId);
+        return () => clearInterval(intervalId);
     }, []);
 
     return (
